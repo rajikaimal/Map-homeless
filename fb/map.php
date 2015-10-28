@@ -68,7 +68,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
         document.getElementsByTagName('body')[0].appendChild(div);
 
         $.post('map.php',{ lat : a.latLng.lat().toFixed(4), lan : a.latLng.lng().toFixed(4) },function(res){
-        	console.log(res);
+        	//console.log(res);
         });
     });
 };
@@ -77,13 +77,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <?php 
 	include "dbconfig.php";
 	$lat = $_POST['lat'];
-	echo $lat;
 	$lon = $_POST['lan'];
 	$userid = 1;
 	function insertMap($userid,$lat,$lon){
-		$date = new Date('y-m-d');
+		$date = "2015-10-30";
 	    $query = mysql_query("insert into maped VALUES ('$userid','$lat','$lon','$date')");
 		mysql_query($query);
 	}
-//	insertMap($userid,$lat,$lon);
+	insertMap($userid,$lat,$lon);
 ?>
