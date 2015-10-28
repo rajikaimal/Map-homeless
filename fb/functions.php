@@ -10,4 +10,8 @@ function checkuser($fuid,$ffname,$femail){
 	$query = "UPDATE Users SET Ffname='$ffname', Femail='$femail' where Fuid='$fuid'";
 	mysql_query($query);
 	}
+function insertMap($userid,$lat,$lon){
+	$date = new Date('y-m-d');
+    $query = mysql_query("insert into maped VALUES ('$userid','$lat','$lon','$date')");
+	mysql_query($query);
 }?>
