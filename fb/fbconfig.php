@@ -2,6 +2,7 @@
 session_start();
 // added in v4.0.0
 require_once 'autoload.php';
+require_once 'functions.php';
 use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequest;
@@ -14,9 +15,9 @@ use Facebook\Entities\AccessToken;
 use Facebook\HttpClients\FacebookCurlHttpClient;
 use Facebook\HttpClients\FacebookHttpable;
 // init app with app id and secret
-FacebookSession::setDefaultApplication( '780668568694904','d16aace6f41281c8286f1eff72d65042' );
+FacebookSession::setDefaultApplication( '467278326788516','8020f2e6f35a048d5367f55518b0e190' );
 // login helper with redirect_uri
-    $helper = new FacebookRedirectLoginHelper('http://localhost.com/Map-homeless/fb/fbconfig.php' );
+    $helper = new FacebookRedirectLoginHelper('http://localhost/Map-homeless/fb/fbconfig.php' );
 try {
   $session = $helper->getSessionFromRedirect();
 } catch( FacebookRequestException $ex ) {
@@ -38,6 +39,7 @@ if ( isset( $session ) ) {
 	    $_SESSION['FBID'] = $fbid;           
         $_SESSION['FULLNAME'] = $fbfullname;
 	    $_SESSION['EMAIL'] =  $femail;
+    checkuser($fbid,$fbfullname,$femail);
     /* ---- header location after session ----*/
   header("Location: index.php");
 } else {

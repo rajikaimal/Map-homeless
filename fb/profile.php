@@ -11,7 +11,7 @@ session_start();
   <?php if ($_SESSION['FBID']): ?>      <!--  After user login  -->
 <div class="container">
 <div class="hero-unit">
-  <h1> <?php echo $_SESSION['USERNAME']; ?></h1>
+  <h1> <?php echo $_SESSION['FULLNAME']; ?></h1>
   <?php include "header.php"; ?>
   </div>
 <div class="span4">
