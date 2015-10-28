@@ -24,6 +24,7 @@ session_start();
 <li><?php echo $_SESSION['FULLNAME']; ?></li>
 <li class="nav-header">Email</li>
 <li><?php echo $_SESSION['EMAIL']; ?></li>
+
 <div><a href="logout.php">Logout</a></div>
 </ul></div></div>
     <?php else: ?>     <!-- Before login --> 
