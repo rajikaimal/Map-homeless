@@ -1,6 +1,7 @@
 <?php
 session_start(); 
 ?>
+<?php include "functions.php"; ?>
 <!doctype html>
 <html xmlns:fb="http://www.facebook.com/2008/fbml">
   <head>
@@ -24,7 +25,12 @@ session_start();
 <li><?php echo $_SESSION['FULLNAME']; ?></li>
 <li class="nav-header">Email</li>
 <li><?php echo $_SESSION['EMAIL']; ?></li>
-
+<?php
+$result= getUserInfo(1);
+    while($row = mysqli_fetch_assoc($result)) {
+        echo $row['date'] . '<br>';
+    }
+?>
 <div><a href="logout.php">Logout</a></div>
 </ul></div></div>
     <?php else: ?>     <!-- Before login --> 
