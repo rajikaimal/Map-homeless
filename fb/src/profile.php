@@ -26,7 +26,8 @@ session_start();
 <li><?php echo $_SESSION['EMAIL']; ?></li>
 <div><a href="logout.php">Logout</a></div>
 </ul></div></div>
-    <?php else {
+
+    <?php else: {
       header('location:/fb/index.php');
       } ?> 
       
