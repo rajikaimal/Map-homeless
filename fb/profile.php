@@ -25,12 +25,21 @@ session_start();
 <li><?php echo $_SESSION['FULLNAME']; ?></li>
 <li class="nav-header">Email</li>
 <li><?php echo $_SESSION['EMAIL']; ?></li>
+     <table>
+         <tr><th>Latitude</th><th>Longitude</th><th>Date</th></tr>
 <?php
-$result= getUserInfo(1);
+$result= getUserInfo($_SESSION['FBID']);
     while($row = mysqli_fetch_assoc($result)) {
-        echo $row['date'] . '<br>';
+        echo '<tr>';
+        echo '<td>'.$row['lat'].'</td>'. '<td>'.$row['lon'].'</td>'.'<td>'.$row['date'].'</td>' . '<br>';
+        echo '</tr>';;
     }
+$count=NoOfMaps($_SESSION['FBID']);
+while($row = mysqli_fetch_assoc($count)) {
+    echo "You have mapped ".$row['count']." times.";
+}
 ?>
+     </table>
 <div><a href="logout.php">Logout</a></div>
 </ul></div></div>
     <?php else: ?>     <!-- Before login --> 

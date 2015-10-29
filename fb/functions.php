@@ -19,9 +19,17 @@ function checkuser($fuid,$ffname,$femail)
         mysql_query($query);
     }
 
-function getUserInfo($uid){
-        $query="select * from maped where userid='$uid'";
-        $result=mysql_query($query);
+function getUserInfo($fbid){
+    $con=dbconnect();
+    $query="select * from maped m,users u where u.Fuid='$fbid' and u.UID=m.userid";
+    $result=mysqli_query($con,$query);
+    return $result;
+}
+function NoOfMaps($fbid){
+    $con=dbconnect();
+    $query="select count(*) as count from maped m,users u where u.Fuid=$fbid and u.UID=m.userid";
+    $result=mysqli_query($con,$query);
+    return $result;
 }
 
 ?>
